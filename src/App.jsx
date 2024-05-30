@@ -1,9 +1,7 @@
+import NavBar from "./navbar";
+
 function App(){
   //Its time to make a website
-    return(
-      <div>
-        <h1>Hello React</h1>
-      </div>
-    )
+    return <NavBar />
 }
 export default App;
