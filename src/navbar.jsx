@@ -1,8 +1,19 @@
 export default function NavBar(){
     return (
-        <button>
-        I'm a button
-      </button>
+    <nav className="nav">
+        <a href="/" className="siteTitle">
+            Site Name
+        </a>
+        <ul>
+            <li>
+                <a href="/blogPosts">Blog Posts</a>
+            </li>
+            <li>
+                <a href="/about">About</a>
+            </li>
+        </ul>
+
+    </nav>
     )
 
 }
