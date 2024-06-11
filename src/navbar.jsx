@@ -1,24 +1,30 @@
+import { useImperativeHandle } from "react"
+import { Link, useMatch, useResolvedPath } from "react-router-dom"
 export default function NavBar(){
     return (
     <nav className="nav">
-        <a href="/" className="siteTitle">
+        <Link to="/" className="siteTitle">
             Site Name
-        </a>
+        </Link>
         <ul>    
-            <CustomLink href="/blog">Blog</CustomLink>
-            <CustomLink href="/about">About</CustomLink>
+            <CustomLink to="/blog">Blog</CustomLink>
+            <CustomLink to="/about">About</CustomLink>
         </ul>
 
     </nav>
     )
 
 }
-
-function CustomLink({ href,children, ...props}){
-    const path = window.location.pathname
+//to is href with react router Link replaces a so that pages only refresh in areas affected by press
+function CustomLink({ to,children, ...props}){
+    const resolvedPath = useResolvedPath(to)
+    const isActive = useMatch({ path: resolvedPath.pathname, end: true}) 
+    //end true ensures you dont  say enter /books/Lovecraft and have /books show up as active instead, makes sure link cant be partial match
     return(
-        <li className={path === href ? 'active' : ""}>
-            <a href={href}>{children}</a>
+        <li className={isActive ? "active" : ""}>
+            <Link to={to} {...props}>
+                {children}
+            </Link>
         </li>
     ) 
 }

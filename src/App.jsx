@@ -1,29 +1,22 @@
 import NavBar from "./navbar";
-import about from './pages/about.jsx'
-import blog from './pages/blog.jsx'
-import home from './pages/home.jsx'
+import About from './pages/about.jsx'
+import Blog from './pages/blog.jsx'
+import Home from './pages/home.jsx'
+import { Route,Routes } from "react-router-dom";
 
 function App(){
   let PageComponent
   //Its time to make a website
-  switch(window.location.pathname){
-    case"/":
-      PageComponent = home
-      break
-    
-    case"/blog": 
-      PageComponent = blog 
-      break
-    
-    case"/about":
-      PageComponent = about 
-      break 
-  }
   return (
     <>
     <NavBar />
     <div className="bodyContainer">
-    <PageComponent />
+        <Routes>
+          <Route path ="/" element={<Home />} />
+          <Route path ="/blog" element={<Blog />} />
+          <Route path ="/about" element={<About />} />
+ 
+        </Routes>
     </div>
     </>
   )
