@@ -11,6 +11,8 @@ body {
     text-align: center;
 }
 .nav{
+    list-style: none;
+
     background-color:#333 ;
     color: white;
     display: flex;
@@ -42,7 +44,7 @@ body {
     font-size: 2rem; 
 }
 
-.nav li:active{
+.link-active{
     background-color: #d56363;
 }
 .nav li:hover{

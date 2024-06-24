@@ -3,9 +3,9 @@ import { Link, useMatch, useResolvedPath } from "react-router-dom"
 export default function NavBar(){
     return (
     <nav className="nav">
-        <Link to="/" className="siteTitle">
+        <CustomLink to="/" className="siteTitle">
             Site Name
-        </Link>
+        </CustomLink>
         <ul>    
             <CustomLink to="/blog">Blog</CustomLink>
             <CustomLink to="/about">About</CustomLink>
@@ -21,7 +21,7 @@ function CustomLink({ to,children, ...props}){
     const isActive = useMatch({ path: resolvedPath.pathname, end: true}) 
     //end true ensures you dont  say enter /books/Lovecraft and have /books show up as active instead, makes sure link cant be partial match
     return(
-        <li className={isActive ? "active" : ""}>
+        <li className={isActive ? "link-active" : ""}>
             <Link to={to} {...props}>
                 {children}
             </Link>
