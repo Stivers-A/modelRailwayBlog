@@ -1,5 +1,6 @@
 import { auth } from '../config/firebase'
 import { createUserWithEmailAndPassword } from 'firebase/auth'
+import { useState } from "react";
 
 export const Auth = () => {
     const [email,setEmail] = useState("") // blocks email and password inputs
