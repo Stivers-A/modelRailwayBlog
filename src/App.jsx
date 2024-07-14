@@ -3,9 +3,7 @@ import About from './pages/about.jsx'
 import Blog from './pages/blog.jsx'
 import Home from './pages/home.jsx'
 import { Route,Routes } from "react-router-dom";
-
 function App(){
-  let PageComponent
   //Its time to make a website
   return (
     <>
