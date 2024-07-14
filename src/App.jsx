@@ -1,4 +1,3 @@
-import { Auth } from "./components/auth.jsx";
 import NavBar from "./navbar";
 import About from './pages/about.jsx'
 import Blog from './pages/blog.jsx'
@@ -18,9 +17,7 @@ function App(){
           <Route path ="/about" element={<About />} />
         </Routes>
     </div>
-    <div>
-      <Auth />
-    </div>
+
     </>
   )
   }
