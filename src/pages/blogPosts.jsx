@@ -2,6 +2,9 @@ import { useEffect, useState } from "react";
 import { database } from "../config/firebase.jsx";
 import { getDocs, collection } from 'firebase/firestore'
 //only one data base, thats the blog, everything else is hardcoded
+
+//TODO add abailty to create and delete posts from specific accounts in the website
+
 export default function BlogPosts(){
     const[postList, setPostList] = useState([]);
     //create list
