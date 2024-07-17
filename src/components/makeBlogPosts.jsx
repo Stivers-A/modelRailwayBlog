@@ -1,9 +1,9 @@
 
 
 // currently exports to blog
-export const MakePost = () => {
+export default function MakePost(){
     <div>
-        <input placeholder="Post Title"/>
-        <input placeholder="Post Content"/>
+        Title: <input placeholder="Post Title"/>
+        Content: <input placeholder="Post Content"/>
     </div>
 }
