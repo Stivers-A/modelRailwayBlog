@@ -41,6 +41,7 @@ export default function BlogPosts(){
                 <ul key={post.id}>
                      <h1> {post.title} </h1> 
                      <p> {post.postText} </p>
+                     
                 </ul>
             )))}
         </div>
