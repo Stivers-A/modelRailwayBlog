@@ -7,8 +7,9 @@ export default function blog() {
     return (
       <div>
         <Auth />
-        <BlogPosts />
         <MakePost />
+        <BlogPosts />
+       
       </div>
 
     )
