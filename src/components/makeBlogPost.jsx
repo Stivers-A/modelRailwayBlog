@@ -24,6 +24,8 @@ export default function MakePost(){
             console.error(err)
         }
     }
+
+
     return(
     <div>   
         Title:  <input placeholder="Post Title" onChange={(e) => setNewPostTitle(e.target.value)}/>

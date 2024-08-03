@@ -1,12 +1,16 @@
 import { useEffect, useState } from "react";
 import { database } from "../config/firebase.jsx";
-import { getDocs, collection } from 'firebase/firestore'
+import { getDocs, collection,doc, deleteDoc } from 'firebase/firestore'
 //only one data base, thats the blog, everything else is hardcoded
 
 //TODO add abailty to create and delete posts from specific accounts in the website
 
 export default function BlogPosts(){
-    
+    //delete function TODO make deletion button visibility Account specific
+    const deletePost = async (id) =>{
+        const postDoc = doc(database,"blogPosts",id)
+        await deleteDoc(postDoc)
+    }
     const[postList, setPostList] = useState([]);
     //create list
 
@@ -45,11 +49,12 @@ export default function BlogPosts(){
                 <ul key={post.id}>
                      <h1> {post.title} </h1> 
                      <p> {post.postText} </p>
-                     
+                     <button onClick={() => deletePost(post.id)}>Delete Post</button>
                 </ul>
             )))}
         </div>
     )
+    //() => is needed because react doesn't like functions that call args otherwise it seems
     //empty dependency [] should prevent it from running all the time, only on load
 
     
