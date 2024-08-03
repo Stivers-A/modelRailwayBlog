@@ -3,7 +3,7 @@ import { database } from "../config/firebase.jsx";
 import { getDocs, collection,doc, deleteDoc } from 'firebase/firestore'
 //only one data base, thats the blog, everything else is hardcoded
 
-//TODO add abailty to create and delete posts from specific accounts in the website
+//TODO add functionality to create and delete posts from specific accounts
 
 export default function BlogPosts(){
     //delete function TODO make deletion button visibility Account specific
