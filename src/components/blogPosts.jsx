@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { database } from "../config/firebase.jsx";
-import { getDocs, collection,doc, deleteDoc } from 'firebase/firestore'
+import { getDocs, collection,doc, deleteDoc,updateDoc } from 'firebase/firestore'
 //only one data base, thats the blog, everything else is hardcoded
-
+//includes rendering,editing and deleting
 //TODO add functionality to create and delete posts from specific accounts
 
 export default function BlogPosts(){
@@ -10,6 +10,14 @@ export default function BlogPosts(){
     const deletePost = async (id) =>{
         const postDoc = doc(database,"blogPosts",id)
         await deleteDoc(postDoc)
+    }
+    //edit function TODO make edit button account specific
+    //editPostContent state
+    const [updatedPost, setUpdatedPost] = useState("")
+
+    const updatePostContent = async (id) =>{
+        const postDoc = doc(database,"blogPosts",id)
+        await updateDoc(postDoc, {postText: updatedPost})
     }
     const[postList, setPostList] = useState([]);
     //create list
@@ -50,13 +58,15 @@ export default function BlogPosts(){
                      <h1> {post.title} </h1> 
                      <p> {post.postText} </p>
                      <button onClick={() => deletePost(post.id)}>Delete Post</button>
+                     <input placeholder="Edit Post" onChange={(e) => setUpdatedPost(e.target.value)}></input>
+                     <button onClick={() => updatePostContent(post.id)}>Update Post</button>
                 </ul>
             )))}
         </div>
     )
     //() => is needed because react doesn't like functions that call args otherwise it seems
     //empty dependency [] should prevent it from running all the time, only on load
-
+    // onchange{(e)} grabs the event of adding/removing text 
     
 
 }
