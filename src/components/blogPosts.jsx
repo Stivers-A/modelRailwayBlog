@@ -13,12 +13,20 @@ export default function BlogPosts(){
     }
     //edit function TODO make edit button account specific
     //editPostContent state
-    const [updatedPost, setUpdatedPost] = useState("")
+    const [updatedPostText, setUpdatedPostText] = useState("")
 
     const updatePostContent = async (id) =>{
         const postDoc = doc(database,"blogPosts",id)
-        await updateDoc(postDoc, {postText: updatedPost})
+        await updateDoc(postDoc, {postText: updatedPostText})
     }
+    //editPostTitle
+    const [updatedPostTitle, setUpdatedPostTitle] = useState("")
+
+    const updatePostTitle = async (id) =>{
+        const postDoc = doc(database,"blogPosts",id)
+        await updateDoc(postDoc, {title: updatedPostTitle})
+    }
+
     const[postList, setPostList] = useState([]);
     //create list
 
@@ -58,8 +66,10 @@ export default function BlogPosts(){
                      <h1> {post.title} </h1> 
                      <p> {post.postText} </p>
                      <button onClick={() => deletePost(post.id)}>Delete Post</button>
-                     <input placeholder="Edit Post" onChange={(e) => setUpdatedPost(e.target.value)}></input>
+                     <input placeholder="Edit Post" onChange={(e) => setUpdatedPostText(e.target.value)}></input>
                      <button onClick={() => updatePostContent(post.id)}>Update Post</button>
+                     <input placeholder="Edit Title" onChange={(e) => setUpdatedPostTitle(e.target.value)}></input>
+                     <button onClick={() => updatePostTitle(post.id)}>Update Post</button>
                 </ul>
             )))}
         </div>
