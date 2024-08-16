@@ -69,7 +69,7 @@ export default function BlogPosts(){
                      <input placeholder="Edit Post" onChange={(e) => setUpdatedPostText(e.target.value)}></input>
                      <button onClick={() => updatePostContent(post.id)}>Update Post</button>
                      <input placeholder="Edit Title" onChange={(e) => setUpdatedPostTitle(e.target.value)}></input>
-                     <button onClick={() => updatePostTitle(post.id)}>Update Post</button>
+                     <button onClick={() => updatePostTitle(post.id)}>Update Title</button>
                 </ul>
             )))}
         </div>

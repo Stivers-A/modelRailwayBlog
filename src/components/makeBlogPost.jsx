@@ -1,6 +1,6 @@
 import { addDoc,collection,deleteDoc,doc } from "firebase/firestore"
 import { useState } from "react"
-import { database } from "../config/firebase.jsx";
+import { database, auth } from "../config/firebase.jsx";
 
 
 
@@ -18,7 +18,8 @@ export default function MakePost(){
         try{
         await addDoc(postCollectionRef,{
             title: newPostTitle,
-             postText: newPostContent
+            postText: newPostContent,
+            userId: auth?.currentUser?.uid
             })
         }catch(err){
             console.error(err)
