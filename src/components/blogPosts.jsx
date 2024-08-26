@@ -1,17 +1,33 @@
 import { useEffect, useState } from "react";
-import { database } from "../config/firebase.jsx";
+import { database, storage } from "../config/firebase.jsx";
 import { getDocs, collection,doc, deleteDoc,updateDoc } from 'firebase/firestore'
+import { ref,uploadBytes } from "firebase/storage";
+
 //only one data base, thats the blog, everything else is hardcoded
 //includes rendering,editing and deleting
+//writeImageFunction imported into blogposts so it gets rendered per post 
+
+
 //TODO add functionality to create and delete posts from specific accounts
 
 export default function BlogPosts(){
+    //post image function
+     const [fileUpload, setFileUpload] = useState(null)
+
+     const uploadFile = () => {
+        if (!fileUpload) return
+        const filesFolderRef = ref(storage, `blogPhotos/${fileUpload.name}` )
+        uploadBytes(filesFolderRef,fileUpload)
+        //gives an error when try catched and set up as async, unsure whats up w/ that
+
+    } 
+
     //delete function TODO make deletion button visibility Account specific
     const deletePost = async (id) =>{
         const postDoc = doc(database,"blogPosts",id)
         await deleteDoc(postDoc)
     }
-    //edit function TODO make edit button account specific
+    //edit function
     //editPostContent state
     const [updatedPostText, setUpdatedPostText] = useState("")
 
@@ -65,14 +81,22 @@ export default function BlogPosts(){
                 <ul key={post.id}>
                      <h1> {post.title} </h1> 
                      <p> {post.postText} </p>
+                     <div>
                      <button onClick={() => deletePost(post.id)}>Delete Post</button>
                      <input placeholder="Edit Post" onChange={(e) => setUpdatedPostText(e.target.value)}></input>
                      <button onClick={() => updatePostContent(post.id)}>Update Post</button>
                      <input placeholder="Edit Title" onChange={(e) => setUpdatedPostTitle(e.target.value)}></input>
                      <button onClick={() => updatePostTitle(post.id)}>Update Title</button>
+                     <div>   
+                         <input type='file' onChange={(e) => setFileUpload(e.target.files[0])}/>
+                         <button onClick={uploadFile}>Upload File</button>
+                     </div>
+                    </div>
                 </ul>
             )))}
+            
         </div>
+        
     )
     //() => is needed because react doesn't like functions that call args otherwise it seems
     //empty dependency [] should prevent it from running all the time, only on load

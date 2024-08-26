@@ -9,6 +9,7 @@ export default function blog() {
         <Auth />
         <MakePost />
         <BlogPosts />
+        
        
       </div>
 
