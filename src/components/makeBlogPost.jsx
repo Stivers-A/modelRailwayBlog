@@ -23,7 +23,9 @@ export default function MakePost(){
         if (!fileUpload) return
         const imgName = newPostTitle + v4()
         const filesFolderRef = ref(storage, `blogPhotos/${  (imgName)}` )
-            uploadBytes(filesFolderRef,fileUpload)
+            uploadBytes(filesFolderRef,fileUpload).then(() => {
+                console.log("Image Uploaded")
+            })
         try{
         await addDoc(postCollectionRef,{
             title: newPostTitle,
