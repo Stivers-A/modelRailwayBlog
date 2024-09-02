@@ -7,7 +7,12 @@ import {
   deleteDoc,
   updateDoc,
 } from "firebase/firestore";
-import { ref, uploadBytes, listAll, getDownloadURL } from "firebase/storage";
+import {
+  ref,
+  uploadBytes,
+  listAll,
+  getDownloadURL
+} from "firebase/storage";
 import { v4 } from "uuid";
 //only one data base, thats the blog, everything else is hardcoded
 //includes rendering,editing and deleting
@@ -91,12 +96,11 @@ export default function BlogPosts() {
       response.items.forEach((item) => {
         getDownloadURL(item).then((url) => {
           setImageList((prev) => [...prev, url]);
+          console.log(url);
         });
       });
     });
   }, []);
-  //gets images in a specific path
-  //handles images attached to posts
 
   return (
     <div>
@@ -106,7 +110,8 @@ export default function BlogPosts() {
           <p> {post.postText} </p>
           <p>
             {imageList.map((url) => {
-              return <img src={url} />;
+
+              return <img src={url} />
             })}
           </p>
           <div>
