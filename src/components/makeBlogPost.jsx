@@ -1,4 +1,4 @@
-import { addDoc, collection, deleteDoc, doc } from "firebase/firestore";
+import { addDoc, collection } from "firebase/firestore";
 import { useState } from "react";
 import { database, storage, auth } from "../config/firebase.jsx";
 import { v4 } from "uuid";
@@ -14,30 +14,14 @@ export default function MakePost() {
   const [newPostTitle, setNewPostTitle] = useState("");
   const [newPostContent, setNewPostContent] = useState("");
   const [fileUpload, setFileUpload] = useState(null);
-//  const [imageUrl, setImageUrl] = useState();
 
-  
   const onSubmitPost = async () => {
     if (!fileUpload) return;
     const imgName = newPostTitle + v4();
     //gives imagefile a random unique name
     const filesFolderRef = ref(storage, `blogPhotos/${imgName}`);
-    uploadBytes(filesFolderRef, fileUpload).then(() => {
-      console.log("Image Uploaded");
-      //this section and imageUrl,setImgUrl are 
-      /*
-      storage()
-        .ref(`blogPhotos/${imgName}`) //name in storage in firebase console
-        .getDownloadURL()
-        .then((url) => {
-          setImageUrl(url);
-        })
-        .catch((err) => console.log("Errors while downloading ", err));
-
-      imgName = imageUrl;
-      console.log("Image Name Updated");*/
-    });
-    
+    await uploadBytes(filesFolderRef, fileUpload);
+    console.log("Image Uploaded");
 
     try {
       await addDoc(postCollectionRef, {
