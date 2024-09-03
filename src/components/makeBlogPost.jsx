@@ -16,12 +16,14 @@ export default function MakePost() {
   const [fileUpload, setFileUpload] = useState(null);
 
   const onSubmitPost = async () => {
-    if (!fileUpload) return;
+    console.log("onSubmitPost called");
+    if (!fileUpload) return //NEW PROBLEM, ONLY UPLOADS IF THERE IS AN IMAGE
     const imgName = newPostTitle + v4();
     //gives imagefile a random unique name
     const filesFolderRef = ref(storage, `blogPhotos/${imgName}`);
     await uploadBytes(filesFolderRef, fileUpload);
     console.log("Image Uploaded");
+  
 
     try {
       await addDoc(postCollectionRef, {
