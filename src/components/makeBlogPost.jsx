@@ -17,24 +17,42 @@ export default function MakePost() {
 
   const onSubmitPost = async () => {
     console.log("onSubmitPost called");
-    if (!fileUpload) return //NEW PROBLEM, ONLY UPLOADS IF THERE IS AN IMAGE
-    const imgName = newPostTitle + v4();
-    //gives imagefile a random unique name
-    const filesFolderRef = ref(storage, `blogPhotos/${imgName}`);
-    await uploadBytes(filesFolderRef, fileUpload);
-    console.log("Image Uploaded");
-  
 
-    try {
-      await addDoc(postCollectionRef, {
-        title: newPostTitle,
-        postText: newPostContent,
-        userId: auth?.currentUser?.uid,
-        imageName: imgName,
-      });
-    } catch (err) {
-      console.error(err);
+    //NEW PROBLEM, ONLY UPLOADS IF THERE IS AN IMAGE
+    if (!fileUpload) {
+      try {
+        console.log("Post Uploaded no image");
+        await addDoc(postCollectionRef, {
+          title: newPostTitle,
+          postText: newPostContent,
+          userId: auth?.currentUser?.uid,
+        });
+      } catch (err) {
+        console.error(err);
+      }
+      return
     }
+    {
+      const imgName = newPostTitle + v4();
+      //gives imagefile a random unique name
+      const filesFolderRef = ref(storage, `blogPhotos/${imgName}`);
+      await uploadBytes(filesFolderRef, fileUpload);
+      console.log("Image Uploaded");
+
+      try {
+        console.log("Post Uploaded");
+        await addDoc(postCollectionRef, {
+          title: newPostTitle,
+          postText: newPostContent,
+          userId: auth?.currentUser?.uid,
+          imageName: imgName,
+        });
+      } catch (err) {
+        console.error(err);
+      }
+      return
+    }
+
   };
 
   return (
