@@ -108,11 +108,11 @@ const Post = ({ post: { id, title, postText, imageName } }) => {
     </p>
     <div>
       <button onClick={() => deletePost()}>Delete Post</button>
-      <input
+      <textarea rows="4" cols="50"
         placeholder="Edit Post"
         value={updatedPostText}
         onChange={(e) => setUpdatedPostText(e.target.value)}
-      ></input>
+      />
       <button onClick={() => updatePostContent()}>
         Update Post
       </button>

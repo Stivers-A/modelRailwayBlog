@@ -63,7 +63,7 @@ export default function MakePost() {
         onChange={(e) => setNewPostTitle(e.target.value)}
       />
       Content:{" "}
-      <input
+      <textarea rows="4" cols="50"
         placeholder="Post Content"
         onChange={(e) => setNewPostContent(e.target.value)}
       />
