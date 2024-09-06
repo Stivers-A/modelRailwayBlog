@@ -50,3 +50,11 @@ body {
 .nav li:hover{
     background-color: #777;
 }
+h1 {
+    font-size: 20px;
+    font-size: 2vw;
+}
+p {
+    font-size: 15px;
+    font-size: 1vw;
+}

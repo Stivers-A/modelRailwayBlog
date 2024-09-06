@@ -100,7 +100,7 @@ const Post = ({ post: { id, title, postText, imageName } }) => {
     getDownloadURL(imageRef).then((url) => setUrl(url), (err) => console.error("Failed to load image URL", err));
   }, [imageRef, setUrl]);
 
-  return <div>
+  return <div className="container-md">
     <h1> {title} </h1>
     <p> {postText} </p>
     <p>
