@@ -100,12 +100,16 @@ const Post = ({ post: { id, title, postText, imageName } }) => {
     getDownloadURL(imageRef).then((url) => setUrl(url), (err) => console.error("Failed to load image URL", err));
   }, [imageRef, setUrl]);
 
-  return <div className="container-md">
+  return <div className=".container">
+    <div className="container-md">
     <h1> {title} </h1>
     <p> {postText} </p>
+    </div>
+    <div className="container-md">
     <p>
       {url && <img src={url} alt="Post image" />}
     </p>
+    </div>
     <div>
       <button onClick={() => deletePost()}>Delete Post</button>
       <textarea rows="4" cols="50"
