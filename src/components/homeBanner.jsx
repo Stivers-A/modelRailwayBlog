@@ -16,7 +16,7 @@ export default function BannerImage(){
     useEffect (()=>{
         listAll(ref(storage,"homePage")).then(imgs=>{
             console.log(imgs)
-            imgs.items.forEach(val=>{
+            imgs.items.then(val=>{
                 getDownloadURL(val).then(url=> {
                     setImgURL(data=> [...data,url])
                 })
