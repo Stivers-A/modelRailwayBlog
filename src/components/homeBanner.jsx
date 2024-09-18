@@ -13,17 +13,25 @@ export default function BannerImage(){
       uploadBytes(imgRef , img)
         }}
     //duplicate issue is a product of react strict mode to replicate with people switching back and forth between different tabs on a site, having useEffect check if it has ran once, is best practice
+
+    let ignore = false
+
     useEffect (()=>{
-        let ignore = false
+
         if (!ignore) {
         listAll(ref(storage,"homePage")).then(imgs=>{
             imgs.items.forEach(val=>{
                 getDownloadURL(val).then(url=> {
                     setImgURL(data=> [...data,url]), (err) => console.error("Failed to load image URL", err)
+                   
                 })
             })
         })
-        return () => {ignore = true}
+        console.log(ignore)
+
+        return() => ignore = true
+        // despite the warning that the change to ignore will be lost, it prevents re rendering
+
         }},[])
     console.log(imgURL,"imgURL")
     const imgURLarray = Array.from(imgURL)
