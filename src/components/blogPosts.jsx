@@ -18,8 +18,11 @@ export default function BlogPosts() {
   const [postList, setPostList] = useState([]);
   //create list
 
-  const postCollectionRef = useMemo(() => collection(database, "blogPosts"), []);
-  //use memo prevents re rendering 
+  const postCollectionRef = useMemo(
+    () => collection(database, "blogPosts"),
+    []
+  );
+  //use memo prevents re rendering
   //collection Ref is used to to store blogposts that will be sent to data
 
   const getPostList = useCallback(async () => {
@@ -51,7 +54,9 @@ export default function BlogPosts() {
 
   return (
     <div>
-      {postList.map((post) => <Post key={post.id} post={post} />)}
+      {postList.map((post) => (
+        <Post key={post.id} post={post} />
+      ))}
     </div>
   );
   //() => is needed because react doesn't like functions that call args otherwise it seems
@@ -60,7 +65,6 @@ export default function BlogPosts() {
 }
 
 const Post = ({ post: { id, title, postText, imageName } }) => {
-
   //delete function TODO make deletion button visibility Account specific
   const deletePost = useCallback(async () => {
     const postDoc = doc(database, "blogPosts", id);
@@ -87,54 +91,58 @@ const Post = ({ post: { id, title, postText, imageName } }) => {
     if (!fileUpload) return;
     const filesFolderRef = ref(storage, `blogPhotos/${imageName}`);
     uploadBytes(filesFolderRef, fileUpload);
-  }, [fileUpload, imageName]); 
-//changes the image!
+  }, [fileUpload, imageName]);
+  //changes the image!
 
-  const imageRef = useMemo(() => ref(storage, `blogPhotos/${imageName}`), [imageName]);
+  const imageRef = useMemo(
+    () => ref(storage, `blogPhotos/${imageName}`),
+    [imageName]
+  );
   const [url, setUrl] = useState(null);
   useEffect(() => {
     if (!imageRef) {
       setUrl(null);
       return;
     }
-    getDownloadURL(imageRef).then((url) => setUrl(url), (err) => console.error("Failed to load image URL", err));
+    getDownloadURL(imageRef).then(
+      (url) => setUrl(url),
+      (err) => console.error("Failed to load image URL", err)
+    );
   }, [imageRef, setUrl]);
 
-  return <div className=".container">
-    <div className="container-md">
-    <h1> {title} </h1>
-    <p> {postText} </p>
-    </div>
-    <div className="container-md">
-    <p>
-      {url && <img src={url} alt="Post image" />}
-    </p>
-    </div>
-    <div>
-      <button onClick={() => deletePost()}>Delete Post</button>
-      <textarea rows="4" cols="50"
-        placeholder="Edit Post"
-        value={updatedPostText}
-        onChange={(e) => setUpdatedPostText(e.target.value)}
-      />
-      <button onClick={() => updatePostContent()}>
-        Update Post
-      </button>
-      <input
-        placeholder="Edit Title"
-        value={updatedPostTitle}
-        onChange={(e) => setUpdatedPostTitle(e.target.value)}
-      ></input>
-      <button onClick={() => updatePostTitle()}>
-        Update Title
-      </button>
+  return (
+    <div className=".container">
+      <div className="container-md">
+        <h1> {title} </h1>
+        <p> {postText} </p>
+      </div>
+      <div className="container-md">
+        <p>{url && <img src={url} alt="Post image" />}</p>
+      </div>
       <div>
-        <input
-          type="file"
-          onChange={(e) => setFileUpload(e.target.files[0])}
+        <button onClick={() => deletePost()}>Delete Post</button>
+        <textarea
+          rows="4"
+          cols="50"
+          placeholder="Edit Post"
+          value={updatedPostText}
+          onChange={(e) => setUpdatedPostText(e.target.value)}
         />
-        <button onClick={() => uploadFile()}>Upload File</button>
+        <button onClick={() => updatePostContent()}>Update Post</button>
+        <input
+          placeholder="Edit Title"
+          value={updatedPostTitle}
+          onChange={(e) => setUpdatedPostTitle(e.target.value)}
+        ></input>
+        <button onClick={() => updatePostTitle()}>Update Title</button>
+        <div>
+          <input
+            type="file"
+            onChange={(e) => setFileUpload(e.target.files[0])}
+          />
+          <button onClick={() => uploadFile()}>Upload File</button>
+        </div>
       </div>
     </div>
-  </div>;
-}
+  );
+};
