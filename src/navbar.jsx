@@ -7,8 +7,8 @@ export default function NavBar(){
             Site Name
         </CustomLink>
         <ul>    
-            <CustomLink to="/blog">Blog</CustomLink>
-            <CustomLink to="/about">About</CustomLink>
+            <CustomLink to="/blog" className="siteTitle">Blog</CustomLink>
+            <CustomLink to="/about" className="siteTitle">About</CustomLink>
         </ul>
 
     </nav>
