@@ -8,8 +8,13 @@ return (
           <div>
           <h1>Home</h1>
           </div>
-          <div>
+          <div className="container-fluid">
+          <div className="container-sm remove-all-margin-padding" >
           <BannerImage />
+          </div>
+          <div className="container-sm remove-all-margin-padding">
+               <p>Hello!</p>
+          </div>
           </div>
      </div>
 )
