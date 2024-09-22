@@ -12,7 +12,23 @@ export default function home() {
             <BannerImage />
           </div>
           <div className="col-sm-4">
-            <p className="container-sm">Hello!</p>
+            <p>Hello!</p>
+            <p>
+              Welcome to my Model Railway, where we journey back to the
+              sun-soaked landscapes of 1950s Southern California. In this blog,
+              we dive into the world of N scale model trains,and the process of
+              making a model railway recreating the vibrant railroads of
+              mid-century California. The posts document my journey as I make my
+              first model railway. 
+              </p>
+              <p>
+              The 1950s was a transformative decade for
+              railroads, as steam engines gave way to sleek diesel locomotives,
+              and California’s rapid growth created a rich tapestry of urban and
+              rural settings for rail lines to traverse. While my layout rests
+              on a two by four board, my goal for it is to have it represent a
+              slice of that tapestry in my home.
+            </p>
           </div>
         </div>
       </div>

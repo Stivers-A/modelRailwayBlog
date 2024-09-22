@@ -46,7 +46,7 @@ export default function BannerImage() {
         <br />
         {imgURLarray.map((dataVal) => (
           <div key={dataVal.id}>
-            <li>
+            <li >
               <img src={dataVal} />
             </li>
             <br />

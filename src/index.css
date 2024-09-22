@@ -4,7 +4,8 @@
 
 body {
      margin: 0;
-     
+     background-color:#4d4d4d ;
+
 }
 .bodyContainer{
     margin: 1rem;
@@ -64,8 +65,13 @@ h1 {
 p {
     font-size: 15px;
     font-size: 1.5vw;
+    text-align: left;
 }
 .remove-all-margin-padding{
     margin:0 !important;
     padding:0 !important;
+}
+img{
+    width:100%;
+    max-width:150rem;
 }
