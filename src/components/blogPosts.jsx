@@ -22,6 +22,7 @@ export default function BlogPosts() {
 
   const postCollectionRef = useMemo(
     () => query(collection(database, "blogPosts"), orderBy("postDate",'desc')),
+    //todo add option to swap from desc newest first, to asc, oldest first
     []
   );
   //use memo prevents re rendering
