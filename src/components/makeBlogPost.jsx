@@ -21,7 +21,7 @@ export default function MakePost() {
     //NEW PROBLEM, ONLY UPLOADS IF THERE IS AN IMAGE
     if (!fileUpload) {
       const d = new Date();
-      const time = d.toLocaleDateString([], {year: 'numeric', month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit'});
+      const time = d.toLocaleDateString([], {year: 'numeric', month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit',second: '2-digit'});
       console.log(time) 
       try {
         console.log("Post Uploaded no image");

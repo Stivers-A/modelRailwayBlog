@@ -6,6 +6,8 @@ import {
   doc,
   deleteDoc,
   updateDoc,
+  orderBy,
+  query,
 } from "firebase/firestore";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 //only one data base, thats the blog, everything else is hardcoded
@@ -19,7 +21,7 @@ export default function BlogPosts() {
   //create list
 
   const postCollectionRef = useMemo(
-    () => collection(database, "blogPosts"),
+    () => query(collection(database, "blogPosts"), orderBy("postDate",'desc')),
     []
   );
   //use memo prevents re rendering
