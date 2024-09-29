@@ -20,12 +20,16 @@ export default function MakePost() {
 
     //NEW PROBLEM, ONLY UPLOADS IF THERE IS AN IMAGE
     if (!fileUpload) {
+      const d = new Date();
+      const time = d.toLocaleDateString([], {year: 'numeric', month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit'});
+      console.log(time) 
       try {
         console.log("Post Uploaded no image");
         await addDoc(postCollectionRef, {
           title: newPostTitle,
           postText: newPostContent,
           userId: auth?.currentUser?.uid,
+          postDate: time,
         });
       } catch (err) {
         console.error(err);
@@ -38,6 +42,7 @@ export default function MakePost() {
       const filesFolderRef = ref(storage, `blogPhotos/${imgName}`);
       await uploadBytes(filesFolderRef, fileUpload);
       console.log("Image Uploaded");
+        
 
       try {
         console.log("Post Uploaded");
