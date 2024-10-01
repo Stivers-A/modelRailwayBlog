@@ -20,8 +20,36 @@ export default function BlogPosts() {
   const [postList, setPostList] = useState([]);
   //create list
 
+  let postOrder ="desc"
+  let postToggleText = "Newest First"
+
+  let postToggle = true
+  function postToggleFunction () {
+    
+    if (postToggle == true) {
+      postToggle = false
+      console.log(postToggle)
+      postOrder="asc"
+      postToggleText = "Oldest First"
+      console.log("Oldest First")
+      
+    } else{
+      postToggle = true
+      console.log(postToggle)
+      postOrder ="desc"
+      postToggleText = "Newest First"
+      console.log("Newest First")
+
+    }
+      
+  }
+  
+    
+  //used to dictate post order for users, default is desc order
+  //newest first
+
   const postCollectionRef = useMemo(
-    () => query(collection(database, "blogPosts"), orderBy("postDate",'desc')),
+    () => query(collection(database, "blogPosts"), orderBy("postDate",postOrder)),
     //todo add option to swap from desc newest first, to asc, oldest first
     []
   );
@@ -55,8 +83,9 @@ export default function BlogPosts() {
     getPostList();
   }, [getPostList]);
 
-  return (
+  return  (
     <div>
+      <button onClick={postToggleFunction}>Sort by {postToggleText}</button>
       {postList.map((post) => (
         <Post key={post.id} post={post} />
       ))}
