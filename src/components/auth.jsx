@@ -1,29 +1,16 @@
-import { app, auth, googleProvider } from "../config/firebase";
+import { auth, googleProvider } from "../config/firebase";
 import {
   createUserWithEmailAndPassword,
   signInWithPopup,
   signOut,
 } from "firebase/auth";
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 // got to make sure things get imported properly, this should have been auto imported, it was not
 //signIn with popup enables googles signin popup
 //signOut signs ya out
 //TODO make auth a pop up page that auto closes one succesfull login/logout and have header display user name
 //google has a photourl for signin that displays your account pfp
 //TODO change the main sign in from createUser to something else, and add seperate create account button
-
-const AuthUserCheck = () => {
-  const [currentUser, setCurrentUser] = useState();
-
-  useEffect(() => {
-    
-    app.auth().onAuthStateChanged((user) => {
-      setCurrentUser(user);
-    });
-  }, []);
-  console.log("Current User " + currentUser);
-//TODO make this useEffect work
-};
 
 
 export const Auth = () => {
@@ -34,7 +21,6 @@ export const Auth = () => {
   // gets current user email
   // ? prevents it from breaking when no one is signed in
 
-  AuthUserCheck;
   const SignIn = async () => {
     //on button press
     //async function as firebase tends to use 'promises'
@@ -43,21 +29,21 @@ export const Auth = () => {
     } catch (err) {
       console.error(err);
     } // try&catch logs errors that may happen due to async&await
-    AuthUserCheck;
+
   };
 
   const SignInWithGoogle = async () => {
     //on button press
     //async function as firebase tends to use 'promises'
     try {
-      await signInWithPopup(auth, googleProvider);
+      await signInWithPopup(auth, googleProvider );
       // uses googleProvider instead of email and password for account access
       //account doesn't need to be made, because google TM
+      console.log(auth)
     } catch (err) {
       console.error(err);
     } // try&catch logs errors that may happen due to async&await
     //next up determining if user is an admin vvVvv
-    AuthUserCheck;
   };
 
   const SignOutfunction = async () => {
@@ -72,6 +58,11 @@ export const Auth = () => {
     } // try&catch logs errors that may happen due to async&await
   };
 
+
+
+  
+  
+  
   return (
     <div>
       <input placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
