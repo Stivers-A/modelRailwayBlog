@@ -12,7 +12,6 @@ import {  useState } from "react";
 //google has a photourl for signin that displays your account pfp
 //TODO change the main sign in from createUser to something else, and add seperate create account button
 
-
 export const Auth = () => {
   const [email, setEmail] = useState(""); // holds value email and password inputs
   const [password, setPassword] = useState("");
@@ -38,8 +37,16 @@ export const Auth = () => {
     try {
       await signInWithPopup(auth, googleProvider );
       // uses googleProvider instead of email and password for account access
-      //account doesn't need to be made, because google TM
-      console.log(auth)
+      //account doesn't need to be made, because google TM\
+      let userInfo = { 
+        //issue appears to be my vars being strings and auth being a json
+        current:{
+          user : auth.currentUser
+          
+        }
+      }
+      console.log(userInfo.user )
+      
     } catch (err) {
       console.error(err);
     } // try&catch logs errors that may happen due to async&await
@@ -59,7 +66,6 @@ export const Auth = () => {
   };
 
 
-
   
   
   
@@ -76,4 +82,6 @@ export const Auth = () => {
       <button onClick={SignOutfunction}>Sign Out</button>
     </div>
   );
+  
 };
+export let SignInWithGoogle
