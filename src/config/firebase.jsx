@@ -21,7 +21,7 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+export const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app) // cant use auth if it isn't exported for use
 export const googleProvider = new GoogleAuthProvider // cant use googleAuth if it isn't exported either
 export const database = getFirestore(app)
