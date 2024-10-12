@@ -37,15 +37,15 @@ export const Auth = () => {
     try {
       await signInWithPopup(auth, googleProvider );
       // uses googleProvider instead of email and password for account access
-      //account doesn't need to be made, because google TM\
-      let userInfo = { 
-        //issue appears to be my vars being strings and auth being a json
-        current:{
-          user : auth.currentUser
+      //account doesn't need to be made, because google TM
+      console.log(auth )
+      console.log(auth.currentUser.uid)
+      // log(auth.currentUser.uid) works 
+  
+      let user = JSON.stringify(auth.currentUser.uid)
           
-        }
-      }
-      console.log(userInfo.user )
+     
+      console.log(user )
       
     } catch (err) {
       console.error(err);
