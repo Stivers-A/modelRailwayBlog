@@ -42,7 +42,7 @@ export const Auth = () => {
       console.log(auth.currentUser.uid)
       // log(auth.currentUser.uid) works 
   
-      let user = JSON.stringify(auth.currentUser.uid)
+       user = JSON.stringify(auth.currentUser.uid)
           
      
       console.log(user )
@@ -85,3 +85,4 @@ export const Auth = () => {
   
 };
 export let SignInWithGoogle
+export let user

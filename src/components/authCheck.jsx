@@ -1,5 +1,5 @@
 import { app } from "../config/firebase";
-
+import { user } from "./auth";
 export const AuthUserCheck = () => {
     
     app.auth().onAuthStateChanged(function(user) {
@@ -18,4 +18,4 @@ export const AuthUserCheck = () => {
       });
   //TODO make this useEffect work
   };
-  
+  export let loggedIn
