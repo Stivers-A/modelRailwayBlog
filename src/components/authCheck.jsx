@@ -1,10 +1,8 @@
-import { app } from "../config/firebase";
-import { user } from "./auth";
+import { SignInWithGoogle } from "./auth";
 export const AuthUserCheck = () => {
-    
-    app.auth().onAuthStateChanged(function(user) {
+  let user = SignInWithGoogle.user
       if (user) {
-        console.log(user)
+        console.log("authCheck recieved" + user)
         if (user.uid=="W9RAq6HDQ1RWJZM9njZQ3VYRbNS2"){
           console.log("We are so in!")
         }else{
@@ -15,7 +13,6 @@ export const AuthUserCheck = () => {
       } else {
         // No user is signed in.
       }
-      });
+      };
   //TODO make this useEffect work
-  };
-  export let loggedIn
+  
