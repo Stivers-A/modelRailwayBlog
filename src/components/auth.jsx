@@ -4,6 +4,7 @@ import {
   signInWithPopup,
   signOut,
 } from "firebase/auth";
+let user
 import {  useState } from "react";
 // got to make sure things get imported properly, this should have been auto imported, it was not
 //signIn with popup enables googles signin popup
@@ -11,6 +12,24 @@ import {  useState } from "react";
 //TODO make auth a pop up page that auto closes one succesfull login/logout and have header display user name
 //google has a photourl for signin that displays your account pfp
 //TODO change the main sign in from createUser to something else, and add seperate create account button
+
+
+const AuthUserCheck = () => {
+  console.log("authCheck recieved " + user)
+      if (user) {
+        if (user =='"W9RAq6HDQ1RWJZM9njZQ3VYRbNS2"'){
+          //somehow doesnt work despite being rhe 
+          console.log("We are so in!")
+        }else{
+          console.log("Nope.")
+
+        }
+        // User is signed in.
+      } else {
+        // No user is signed in.
+      }
+      };
+
 
 export const Auth = () => {
   const [email, setEmail] = useState(""); // holds value email and password inputs
@@ -38,19 +57,20 @@ export const Auth = () => {
       await signInWithPopup(auth, googleProvider );
       // uses googleProvider instead of email and password for account access
       //account doesn't need to be made, because google TM
-      console.log(auth )
-      console.log(auth.currentUser.uid)
+      console.log("auth " + auth )
+      console.log("auth current user " + auth.currentUser.uid)
       // log(auth.currentUser.uid) works 
   
-      let user = JSON.stringify(auth.currentUser.uid)
+      user = JSON.stringify(auth.currentUser.uid)
           
      
-      console.log(user )
+      console.log("user" + user )
       
     } catch (err) {
       console.error(err);
     } // try&catch logs errors that may happen due to async&await
     //next up determining if user is an admin vvVvv
+    AuthUserCheck()
   };
 
   const SignOutfunction = async () => {
@@ -84,4 +104,3 @@ export const Auth = () => {
   );
   
 };
-export let SignInWithGoogle
