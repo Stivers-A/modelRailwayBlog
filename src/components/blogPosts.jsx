@@ -10,6 +10,8 @@ import {
   query,
 } from "firebase/firestore";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { confirmUser } from "./namespace";
+
 //only one data base, thats the blog, everything else is hardcoded
 //includes rendering,editing and deleting
 //writeImageFunction imported into blogposts so it gets rendered per post
@@ -141,7 +143,20 @@ const Post = ({ post: { id, title, postText, imageName } }) => {
       (err) => console.error("Failed to load image URL", err)
     );
   }, [imageRef, setUrl]);
-
+if (!confirmUser.auth){
+  return (
+    <div className=".container">
+      <div className="container-md">
+        <h1> {title} </h1>
+        <p> {postText} </p>
+      </div>
+      <div className="container-md">
+        <p>{url && <img src={url} alt="Post image" />}</p>
+      </div>
+    </div>
+  );
+}
+else
   return (
     <div className=".container">
       <div className="container-md">

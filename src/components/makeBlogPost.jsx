@@ -3,9 +3,10 @@ import { useState } from "react";
 import { database, storage, auth } from "../config/firebase.jsx";
 import { v4 } from "uuid";
 import { ref, uploadBytes } from "firebase/storage";
+import { confirmUser } from "./namespace";
 
 // currently exports to blog
-console.log("Does this actually show up?");
+console.log("Does this actually show up?" + confirmUser.auth );
 // New Post States
 
 const postCollectionRef = collection(database, "blogPosts");
@@ -59,7 +60,12 @@ export default function MakePost() {
     }
 
   };
-
+if (!confirmUser.auth){
+  return (
+    null
+  )
+}
+else
   return (
     <div>
       Title:{" "}

@@ -4,7 +4,11 @@ import {
   signInWithPopup,
   signOut,
 } from "firebase/auth";
+import { confirmUser } from "./namespace";
 let user
+
+console.log("Test confirmuser namespace" + confirmUser.auth );
+
 import {  useState } from "react";
 // got to make sure things get imported properly, this should have been auto imported, it was not
 //signIn with popup enables googles signin popup
@@ -20,8 +24,11 @@ const AuthUserCheck = () => {
         if (user =='"W9RAq6HDQ1RWJZM9njZQ3VYRbNS2"'){
           //somehow doesnt work despite being rhe 
           console.log("We are so in!")
+          confirmUser.auth =  true
         }else{
           console.log("Nope.")
+          confirmUser.auth =  false
+
 
         }
         // User is signed in.
