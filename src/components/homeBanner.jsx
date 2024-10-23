@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { storage } from "../config/firebase";
 import { getDownloadURL, listAll, ref, uploadBytes } from "firebase/storage";
 import { v4 } from "uuid";
+import { confirmUser } from "./namespace";
 
 export default function BannerImage() {
   const [img, setImg] = useState("");
@@ -36,6 +37,19 @@ export default function BannerImage() {
   console.log(imgURL, "imgURL");
   const imgURLarray = Array.from(imgURL);
   //needs to be an array to map properly
+  if (!confirmUser.auth) {
+    return (<div>
+      <br />
+      {imgURLarray.map((dataVal) => (
+        <div key={dataVal.id}>
+          <li >
+            <img src={dataVal} />
+          </li>
+          <br />
+        </div>
+      ))}
+    </div>)}
+  else
   return (
     <div>
       <div>
