@@ -38,6 +38,9 @@ export default function MakePost() {
     }
     {
       const imgName = newPostTitle + v4();
+      const d = new Date();
+      const time = d.toLocaleDateString([], {year: 'numeric', month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit',second: '2-digit'});
+
       //gives imagefile a random unique name
       const filesFolderRef = ref(storage, `blogPhotos/${imgName}`);
       await uploadBytes(filesFolderRef, fileUpload);
@@ -51,6 +54,8 @@ export default function MakePost() {
           postText: newPostContent,
           userId: auth?.currentUser?.uid,
           imageName: imgName,
+          postDate: time,
+
         });
       } catch (err) {
         console.error(err);

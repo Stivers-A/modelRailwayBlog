@@ -24,6 +24,7 @@ export default function BlogPosts() {
   let postToggleText = "Newest First"
 
   let postToggle = true
+  // true = mewest first, false = oldest first
   function postToggleFunction () {
     
     if (postToggle == true) {
