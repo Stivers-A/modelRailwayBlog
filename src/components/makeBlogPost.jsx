@@ -21,8 +21,9 @@ export default function MakePost() {
 
     //NEW PROBLEM, ONLY UPLOADS IF THERE IS AN IMAGE
     if (!fileUpload) {
-      const d = new Date();
-      const time = d.toLocaleDateString([], {year: 'numeric', month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit',second: '2-digit'});
+      const time = Date.now()
+      //const d = new Date();
+      //const time = d.toLocaleDateString([], {year: 'numeric', month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit',second: '2-digit'});
       console.log(time) 
       try {
         console.log("Post Uploaded no image");
@@ -39,10 +40,14 @@ export default function MakePost() {
     }
     {
       const imgName = newPostTitle + v4();
-      const d = new Date();
-      const time = d.toLocaleDateString([], {year: 'numeric', month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit',second: '2-digit'});
+      const time = Date.now()
 
-      //gives imagefile a random unique name
+            //const d = new Date();
+      //const time = d.toLocaleDateString([], {});
+//{year: 'numeric', month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit',second: '2-digit'
+//apparently that style of dating breaks chronological sort on posts a month apart, checking default and switching to it if it works better.  
+//commenented out in both imageless, and with image 
+//gives imagefile a random unique name
       const filesFolderRef = ref(storage, `blogPhotos/${imgName}`);
       await uploadBytes(filesFolderRef, fileUpload);
       console.log("Image Uploaded");
