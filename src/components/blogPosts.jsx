@@ -146,7 +146,7 @@ const Post = ({ post: { id, title, postText, imageName } }) => {
   }, [imageRef, setUrl]);
 if (!confirmUser.auth){
   return (
-    <div className=".container">
+    <div className=".container"   id="text">
       <div className="container-md">
         <h1> {title} </h1>
         <p> {postText} </p>
@@ -159,10 +159,10 @@ if (!confirmUser.auth){
 }
 else
   return (
-    <div className=".container" >
+    <div className=".container" id="text">
       <div className="container-md" >
-        <h2> {title} </h2>
-        <p> {postText} </p>
+        <h2 > {title} </h2>
+        <p >  {postText} </p>
       </div>
       <div className="container-md">
         <p>{url && <img src={url} alt="Post image" />}</p>

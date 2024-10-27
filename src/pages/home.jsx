@@ -12,7 +12,8 @@ export default function home() {
             <BannerImage />
           </div>
           <div className="col-sm-4" >
-            <p id='text'>Hello!
+            <p id='text'>
+              Hello!
               <br></br>
               Welcome to my model railway, where we journey back to the
               sun-soaked landscapes of 1950s Southern California. In this blog,
