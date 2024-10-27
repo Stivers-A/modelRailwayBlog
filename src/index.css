@@ -1,7 +1,16 @@
 * {
     box-sizing: border-box;
 }
-
+#text{
+    background-color: #cfb997 ;
+    padding-left: 1rem;
+    margin-top: 1.5rem;
+    margin-left: 0;
+    padding-bottom: 0;
+    border: 0.5rem double;
+    border-color:  rgb(10, 9, 9) ;
+    
+}
 body {
      margin: 0;
      background-color:#4d4d4d ;
@@ -59,19 +68,27 @@ body {
     font-size: 2vw;
 }
 h1 {
+    font-size: 22px;
+    font-size: 2vw;
+}
+.h2{
     font-size: 18px;
     font-size: 1.8vw;
 }
 p {
-    font-size: 15px;
-    font-size: 1.5vw;
+    font-size: 10px;
+    font-size: 1.4vw;
     text-align: left;
+
+
 }
-.remove-all-margin-padding{
+
+#remove-all-margin-padding{
     margin:0 !important;
     padding:0 !important;
 }
 img{
+    position: relative;
     width:100%;
     max-width:150rem;
 }

@@ -159,9 +159,9 @@ if (!confirmUser.auth){
 }
 else
   return (
-    <div className=".container">
-      <div className="container-md">
-        <h1> {title} </h1>
+    <div className=".container" >
+      <div className="container-md" >
+        <h2> {title} </h2>
         <p> {postText} </p>
       </div>
       <div className="container-md">
