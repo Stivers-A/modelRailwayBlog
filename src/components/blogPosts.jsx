@@ -146,27 +146,29 @@ const Post = ({ post: { id, title, postText, imageName } }) => {
   }, [imageRef, setUrl]);
 if (!confirmUser.auth){
   return (
-    <div className=".container"   id="text">
-      <div className="container-md">
+    <div className=".container"   id="buffer">
+      <div className="container-md" id="text">
         <h1> {title} </h1>
         <p> {postText} </p>
-      </div>
-      <div className="container-md">
+        <div className="container-md">
         <p>{url && <img src={url} alt="Post image" />}</p>
       </div>
+      </div>
+     
     </div>
   );
 }
 else
   return (
-    <div className=".container" id="text">
-      <div className="container-md" >
+    <div className=".container" id="buffer">
+      <div className="container-md" id="text">
         <h2 > {title} </h2>
         <p >  {postText} </p>
-      </div>
-      <div className="container-md">
+        <div className="container-md">
         <p>{url && <img src={url} alt="Post image" />}</p>
       </div>
+      </div>
+
       <div>
         <button onClick={() => deletePost()}>Delete Post</button>
         <textarea

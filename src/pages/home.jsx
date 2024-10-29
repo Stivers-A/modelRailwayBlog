@@ -3,9 +3,11 @@ import BannerImage from "../components/homeBanner";
 export default function home() {
   return (
     <div>
+      {/*
       <div >
-        <h1>Home</h1>
+        <h1 id="title">Home</h1>
       </div>
+      */}
       <div className="container-fluid">
         <div className="row">
           <div className="col-sm-8" id="remove-all-margin-padding">
