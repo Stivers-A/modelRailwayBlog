@@ -13,6 +13,9 @@ export default function about() {
           railway and having a show case of my knowledge about React and
           Firebase. Thus this website is part passion project and part portfolio
           piece.
+          <br></br>
+          <br></br>
+          With that said this site also is a product of passion in its own right, existing so I can share what I have made with others. So I hope you enjoy your time here, and enjoy the scaled views I hope to emulate. 
         </p>
         <p></p>
       </div>
