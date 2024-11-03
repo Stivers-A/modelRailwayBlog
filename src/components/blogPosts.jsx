@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useCallback, useState } from "react";
-import { database, storage } from "../config/firebase.jsx";
+import { database, storage, auth } from "../config/firebase.jsx";
 import {
   getDocs,
   collection,
@@ -21,6 +21,7 @@ import { confirmUser } from "./namespace";
 export default function BlogPosts() {
   const [postList, setPostList] = useState([]);
   //create list
+  console.log("User info" + auth.currentUser)
 
   let postOrder ="desc"
   let postToggleText = "Newest First"

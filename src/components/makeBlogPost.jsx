@@ -25,12 +25,13 @@ export default function MakePost() {
       //const d = new Date();
       //const time = d.toLocaleDateString([], {year: 'numeric', month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit',second: '2-digit'});
       console.log(time) 
+      console.log(auth.currentUser)
       try {
         console.log("Post Uploaded no image");
         await addDoc(postCollectionRef, {
           title: newPostTitle,
           postText: newPostContent,
-          userId: auth?.currentUser?.uid,
+          userId: auth?.currentUser?.metadata.createdAt,
           postDate: time,
         });
       } catch (err) {
@@ -58,7 +59,7 @@ export default function MakePost() {
         await addDoc(postCollectionRef, {
           title: newPostTitle,
           postText: newPostContent,
-          userId: auth?.currentUser?.uid,
+          userId: auth?.currentUser?.metadata.createdAt,
           imageName: imgName,
           postDate: time,
 
