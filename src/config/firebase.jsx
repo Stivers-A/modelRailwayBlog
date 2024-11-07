@@ -2,6 +2,7 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
 import { getFirestore } from 'firebase/firestore'
+import { getStorage } from 'firebase/storage'
 
 // getAuth for normal signin GoogleAuth is used for google sign in
 // TODO: Add SDKs for Firebase products that you want to use
@@ -20,7 +21,8 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+export const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app) // cant use auth if it isn't exported for use
 export const googleProvider = new GoogleAuthProvider // cant use googleAuth if it isn't exported either
 export const database = getFirestore(app)
+export const storage = getStorage(app)
