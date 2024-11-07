@@ -21,7 +21,7 @@ import {  useState } from "react";
 const AuthUserCheck = () => {
   console.log("authCheck recieved " + user)
       if (user) {
-        if (user =='"W9RAq6HDQ1RWJZM9njZQ3VYRbNS2"'){
+        if (user =='"1721519413230"'){
           //somehow doesnt work despite being rhe 
           console.log("We are so in!")
           confirmUser.auth =  true
@@ -64,11 +64,11 @@ export const Auth = () => {
       await signInWithPopup(auth, googleProvider );
       // uses googleProvider instead of email and password for account access
       //account doesn't need to be made, because google TM
-      console.log("auth " + auth )
-      console.log("auth current user " + auth.currentUser.uid)
+      console.log( auth )
+      console.log(auth.currentUser.metadata.createdAt)
       // log(auth.currentUser.uid) works 
   
-      user = JSON.stringify(auth.currentUser.uid)
+      user = JSON.stringify(auth.currentUser.metadata.createdAt)
           
      
       console.log("user" + user )
