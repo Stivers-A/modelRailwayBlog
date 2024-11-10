@@ -1,13 +1,14 @@
+import { useImperativeHandle } from "react"
 import { Link, useMatch, useResolvedPath } from "react-router-dom"
 export default function NavBar(){
     return (
     <nav className="nav">
-        <CustomLink to="/" className="Alex's Model Trains">
-            Site Name
+        <CustomLink to="/" className="siteTitle">
+            Alex's Model Trains
         </CustomLink>
         <ul>    
-            <CustomLink to="/blog" className="Alex's Model Trains">Blog</CustomLink>
-            <CustomLink to="/about" className="Alex's Model Trains">About</CustomLink>
+            <CustomLink to="/blog" className="siteTitle">Blog</CustomLink>
+            <CustomLink to="/about" className="siteTitle">About</CustomLink>
         </ul>
 
     </nav>
