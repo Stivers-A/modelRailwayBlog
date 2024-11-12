@@ -89,15 +89,17 @@ export default function BlogPosts() {
 
   return  (
     <div>
-      <button onClick={postToggleFunction}>Sort by {postToggleText}</button>
+      {/*<button onClick={postToggleFunction}>Sort by {postToggleText}</button>*/}
       {postList.map((post) => (
         <Post key={post.id} post={post} />
       ))}
     </div>
   );
+  
   //() => is needed because react doesn't like functions that call args otherwise it seems
   //empty dependency [] should prevent it from running all the time, only on load
   // onchange{(e)} grabs the event of adding/removing text
+  //TODO uncomment out the post toggle button  if refresh bug fixed
 }
 
 const Post = ({ post: { id, title, postText, imageName } }) => {
