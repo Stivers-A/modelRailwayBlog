@@ -97,7 +97,7 @@ export const Auth = () => {
   
   
   return (
-    <div>
+    <div class="text-end">
       <input placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
       <input
         placeholder="Password"
@@ -105,7 +105,9 @@ export const Auth = () => {
         type="password" //blocks text from being visible
       />
       <button onClick={SignIn}> Sign In </button>
+      <br></br>
       <button onClick={SignInWithGoogle}> Sign In With Google</button>
+      
       <button onClick={SignOutfunction}>Sign Out</button>
     </div>
   );
