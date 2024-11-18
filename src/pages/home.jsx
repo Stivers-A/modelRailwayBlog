@@ -10,10 +10,10 @@ export default function home() {
       */}
       <div className="container-fluid">
         <div className="row">
-          <div className="col-sm-8" id="remove-all-margin-padding">
+          <div className="col-sm-4" id="remove-all-margin-padding">
             <BannerImage />
           </div>
-          <div className="col-sm-4" >
+          <div className="col-sm-8" >
             <p id='text'>
               Hello!
               <br></br>

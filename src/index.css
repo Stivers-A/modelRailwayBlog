@@ -61,8 +61,7 @@ body {
 }
 
 .siteTitle{
-    font-size: 22px;
-    font-size: 2vw;
+    font-size: 5vw;
 }
 
 .link-active{
@@ -72,20 +71,16 @@ body {
     background-color: #777;
 }
 .header{
-    font-size: 20px;
-    font-size: 2vw;
+
 }
 h1 {
-    font-size: 22px;
-    font-size: 2vw;
+    font-size: 5vw;
 }
 .h2{
-    font-size: 18px;
-    font-size: 1.8vw;
+    font-size: 3.5vw;
 }
 p {
-    font-size: 10px;
-    font-size: 1.4vw;
+    font-size: 2.3vw;
     text-align: left;
 }
 
