@@ -97,7 +97,7 @@ export const Auth = () => {
   
   
   return (
-    <div class="text-end">
+    <div class="text-center">
       <input placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
       <input
         placeholder="Password"
